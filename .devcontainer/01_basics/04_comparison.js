@@ -13,6 +13,6 @@ console.log(undefined>=0);
 
 //Comparison is quite different from equality check works differently.
 
-//===Triple check
+//===Triple check: in addtion to normal checking it also focuses on the datatype of two things being compared.
 console.log("2"===2);
 console.log("2"==2);
