@@ -33,3 +33,33 @@ const obj4= Object.assign({}, obj1, obj2);
 
 //frequently used---->latest and simple
 const obj5={...obj1, ...obj2}
+
+/*******Object part3******/
+const course={
+    coursename:"Javascript ",
+    price: 999,
+    courseInstructor:"Hitesh Bhaiya"
+}
+
+//chaning name for easily calling(destructure).
+//syntax= {name of key: revised name}=name of object.
+const{ courseInstructor: ins}=course
+console.log(ins);//print name of courseInstructor.
+
+//react---> destructuring
+// const navbar=({company})=>{
+
+// }
+// navbar(company = "Google");
+
+//API------>
+//values basically comes in json which resembles to objects
+// {
+//     "name": "vartika",
+//     "course": "DBMS",
+//     "price": "Free"
+// }
+//in json both keys and values are in string
+
+//sometimeś you will get api in array format, [{   }, {   }]---->Array with multiple loop
+//json formatter to understand a particular json file-----> with the help of tree structure.
