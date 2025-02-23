@@ -34,4 +34,3 @@ for(const key in map){
 const coding=  ['js', 'rb', 'py', 'java'];
 //callback function don't have name.
 
-coding.forEach(function name())
