@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub User Data</title>
+    <style>
+        /* Basic page styling */
+        body {
+            background-color: rgb(49, 80, 4);
+            color: white;
+            font-family: Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+    </style>
+</head>
+
+<body>
+</body>
+    <script>
+        // GitHub API URL for a specific user
+        const requestURL = 'https://api.github.com/users/Naziya1140';
+
+        // Creating a new XMLHttpRequest object
+        const xhr = new XMLHttpRequest();
+
+        // Opening a GET request to the specified URL, everything is prepared but not sent yet.
+        xhr.open('GET', requestURL);
+
+        // Tracking the state changes of the request
+        //onreadystaechange is a event which is triggered(callback function) when the state of the request changes.
+// xhr.open('GET', requestURL) — readyState becomes 1.
+// xhr.send() — request is sent, readyState goes from 2 to 4.
+// onreadystatechange fires every time readyState changes.
+        xhr.onreadystatechange = function() {
+            console.log(`Ready state: ${xhr.readyState}`);
+
+            // Ready state 4 means the request is complete
+            if (xhr.readyState === 4) {
+                // Parsing the JSON response
+                const data = JSON.parse(xhr.responseText);
+
+                // Logging the entire data object
+                console.log(data);
+
+                // Confirming the data type---> 
+                // normally the api is there in string format due to which accessing details becomes harder so we hve to change it to json object.
+                console.log(`Data type: ${typeof data}`);
+
+                // Accessing and logging a specific property (user's name)
+                console.log(`User name: ${data.name}`);
+            }
+        };
+
+        // Sending the HTTP request
+        xhr.send();
+    </script>
+</html>
