@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Html events</title>
+</head>
+<body style="background-color: #414141; color: aliceblue;">
+    <h2>Images from Pexel</h2>
+    <div >
+        <ul id="images">
+            <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="photoshop"></li>
+            <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="" ></li>
+            <li><img width="200px" id="prayer" src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+        </ul>
+    </div>
+</body>
+<script>
+    //  events: The events are related to some activities, mouse move, drag and drop, key pressed etc
+    //approach1--->Not feasible
+    // <li><img src="" alt=""  onclick="alert('owl clicked')"></li>
+    
+    //approach2--->little better
+    // document.getElementById('owl').onclick= function(){
+    //     alert("Owl clicked");
+    // }
+
+    //approach3--->Best One
+    // document.getElementById('owl').addEventListener('click', function(){
+    //     alert("Owl clicked");
+    // }, false)
+    //third parmanent is false-->by default it is false.
+    // event propagation:
+    // event bubbling-> from down to bottom.
+    // event capturing->From top to bottom. 
+
+    //some other approaches.
+    //attachEvent()
+    //jQuery- we have on event listener
+
+    //Important events to study.
+    // type, timestamp, defaultPrevented,
+    // target, toElement, srcElement, currentTarget,
+    // clientX, clientY, screenX, screenY
+    // altkey, ctrlkey, shiftkey, keyCode 
+    
+document.getElementById('images').addEventListener('click', function(e){
+    console.log("clicked inside the ul");
+},false)//invoked when you click anywhere in the ul
+    
+document.getElementById('owl').addEventListener('click', function(e){
+    console.log("clicked on owl")
+},false)//on clicking owl you will get both, owl clicked, then ul clicked.
+//in the above case, event is progating in form of bubling, owl-->li--->ul
+
+//true--->capturing mode.
+//false--->bubbling mode.
+
+document.getElementById('prayer').addEventListener('click', function(e){
+    console.log("clicked on prayer")
+    // e.stopPropagation();//This will ensure that propagation won't happen
+},true)
+//work according to your needs.
+
+
+document.getElementById('google').addEventListener('click', function(e){
+    e.preventDefault();
+    e.stopPropagation();
+    console.log("google clicked")
+},false);
+
+</script>
+</html>
